@@ -2,7 +2,7 @@
 
 This project provisions Centos 7 based development environments with Ansible
 for running in Vagrant/VirtualBox. The Vagrantfile uses a base box from
-[casparderksen/packer-kickstart-vagrant](casparderksen/packer-kickstart-vagrant),
+[casparderksen/packer-kickstart-vagrant](https://github.com/casparderksen/packer-kickstart-vagrant),
 but any Centos 7 image with Ansible pre-installed should work.  See also this
 project for pre-packaging a development environment as Vagrant box (ideal when
 your corporate service management processes and internet policies fail to yield
@@ -38,8 +38,8 @@ The `oracle.yml` playbook installs the following software
 
 # Usage
 
-Clone [casparderksen/packer-kickstart-vagrant](casparderksen/packer-kickstart-vagrant) and create 
-an Ansible box. Alternatively, adapt the Vagrant file for using another box and installing Ansible.
+Clone [casparderksen/packer-kickstart-vagrant](https://github.com/casparderksen/packer-kickstart-vagrant)
+and create an Ansible box. Alternatively, adapt the Vagrant file for using another box and installing Ansible.
 
 Start the box, and enter it with SSH:
 
