@@ -1,0 +1,12 @@
+---
+
+minidcos_bin_url: https://github.com/dcos/dcos-e2e/releases/download/2019.05.24.1/minidcos
+minidcos_bin: /usr/local/bin/minidcos
+minidcos_host_port_map: 8888:80
+
+dcos_files_dir: /vagrant/files/dcos
+dcos_version: stable/1.13.1
+dcos_bin_url: https://downloads.dcos.io/binaries/cli/linux/x86-64/dcos-1.13/dcos
+dcos_bin: /usr/local/bin/dcos
+
+dcos_agents: 1

@@ -1,0 +1,30 @@
+---
+
+- name: Find existing DC/OS clusters
+  command: "{{ minidcos_bin }} docker list"
+  register: minidcos_list
+
+- block:
+    - name: Create DC/OS cluster
+      command: "{{ minidcos_bin }} docker create --variant oss --docker-version 17.12.1-ce
+        --agents {{ dcos_agents }}
+        --cluster-id {{ dcos_cluster_id }}
+        --extra-config {{ dcos_files_dir }}/config.yml
+        --one-master-host-port-map {{ minidcos_host_port_map }}
+        {{ dcos_files_dir }}/dcos_generate_config.sh"
+    - name: Wait for DC/OS  to be ready
+      command: "{{ minidcos_bin }} docker wait"
+  when: minidcos_list.stdout.find('default') == -1
+
+- name: Inspect DC/OS cluster details
+  command: "{{ minidcos_bin }} docker inspect --cluster-id {{ dcos_cluster_id }}"
+  register: minidcos_inspect
+
+- set_fact:
+    dcos_cluster_info: "{{ minidcos_inspect.stdout | from_json }}"
+
+- set_fact:
+    dcos_master_ip: "{{ dcos_cluster_info.Nodes.masters[0].ip_address }}"
+
+- name: Setup dcos CLI to communicate with the cluster
+  command: "{{ dcos_bin }} cluster setup http://{{ dcos_master_ip }}"

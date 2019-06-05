@@ -1,0 +1,15 @@
+---
+
+- hosts: all
+  become: yes
+
+  tasks:
+    -
+    - include_role:
+        name: minidcos
+      vars:
+        dcos_cluster_id: default
+        minidcos_host_port_map: 8888:80
+
+
+
