@@ -97,7 +97,7 @@ SSH into the box and run:
     $ cd /vagrant/ansible
     $ ansible-playbook minidcos.yml
 
-Wait for DC/OS to be ready. Go to [http://localhost;8888](http://localhost:8888) for accessing the DC/OS console.
+Wait for DC/OS to be ready. Go to [http://localhost:8888](http://localhost:8888) for accessing the DC/OS console.
 
 # Dependencies
 
