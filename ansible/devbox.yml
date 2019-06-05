@@ -30,9 +30,5 @@
     - docker-images
     - node
     - maven
-    - minidcos
     - openjdk
     - tools
-
-
-
