@@ -8,12 +8,14 @@ project for pre-packaging a development environment as Vagrant box (ideal when
 your corporate service management processes and internet policies fail to yield
 a satisfactory development environment).
 
-The `devbox.yml` playbook installs the following software:
+The `devbox.yml` playbook installs the following software (adapt to your needs):
 - Docker daemon
 - Various Docker images
 - Apache Maven
 - OpenJDK-8 and 11 installation
 - Node and NPM
+- CNTLM proxy
+- Oracle Instantclient
 - miniDC/OS installer
 - Misc command line tools (git, jq, httpie, make, ...)
 
@@ -25,7 +27,7 @@ The `local.yml` playbook applies the following configuration (adapt variables to
 - Maven, fully configured `settings.xml` for Nexus3 repository with encrypted password
 - Node and NPM configured with Nexus as proxy
 - Local CA trust stores for Linux and Java
-- Corporate proxy integration via CNTLM
+- Configuration for CNTLM and running cntlmd daemon for corporate proxy integration
 
 The `minidcos.yml` playbook installs the following software:
 - miniDC/OS command line tool (`minidcos`)

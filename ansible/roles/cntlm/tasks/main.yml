@@ -1,14 +1,15 @@
 ---
 
+- name: Find CNTLM package
+  find:
+    paths: "{{ cntlm_rpm_dir }}"
+    patterns: "*.rpm"
+  register: rpm_files
+
 - name: Install CNTLM package
-  block:
-    - find:
-        paths: "{{ cntlm_rpm_dir }}"
-        patterns: "*.rpm"
-      register: rpm_files
-    - yum:
-        name: "{{ rpm_files.files | map(attribute='path') | list}}"
-        state: present
+  yum:
+    name: "{{ rpm_files.files | map(attribute='path') | list}}"
+    state: present
 
 - name: Fix missing pid dir for cntlmd
   file:
@@ -23,12 +24,14 @@
     src: cntlm.sh.j2
     dest: /etc/profile.d/cntlm.sh
     mode: 0644
+  when: cntlm_config is defined
 
 - name: Ensure CNTLM daemon is started at boot and running
   service:
     name: cntlmd
     state: started
     enabled: yes
+  when: cntlm_config is defined
 
 - name: Configure CNTLM
   include: cntlm_config.yml

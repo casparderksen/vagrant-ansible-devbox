@@ -26,8 +26,10 @@
   become: yes
   roles:
     - angular-dev
+    - cntlm
     - docker
     - docker-images
+    - instantclient
     - node
     - maven
     - minidcos
