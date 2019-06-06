@@ -1,6 +1,3 @@
 ---
 
 cntlm_rpm_dir: /vagrant/files/cntlm
-
-proxy_url: http://localhost:3128
-

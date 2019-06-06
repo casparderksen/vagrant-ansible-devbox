@@ -131,3 +131,4 @@
             - proxy.local:8080
           no_proxy:
             - "*.local"
+          user_agent: "Mozilla/5.0 (compatible; MSIE 10.0; Windows NT 6.1; Trident/6.0)"
