@@ -1,10 +1,4 @@
 ---
 
-- name: Create .npmrc file
-  template:
-    src: npmrc.j2
-    dest: "~{{ user }}/.npmrc"
-    owner: "{{ user }}"
-    group: "{{ user }}"
-    mode: 0644
-  when: npmrc is defined 
+- name: Configure NPM parameter
+  command: "npm config set '{{ item.key }}' '{{ item.value }}' --global"

@@ -105,10 +105,10 @@
     - include_role:
         name: node
       vars:
-        npmrc:
+        npm_config:
           npm_registry: https://nexus3.local/repository/npm-all
           sass_binary_site: https://nexus3.local/repository/node-sass-binaries
-          strict_ssl: "false"
+          strict-ssl: "false"
 
     - include_role:
         name: instantclient

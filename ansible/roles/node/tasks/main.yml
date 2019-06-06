@@ -16,6 +16,5 @@
 
 - name: Create NPM settings
   include: npm_config.yml
-  with_items: "{{ npm_users }}"
-  loop_control:
-    loop_var: user
+  with_items: "{{ npm_config | dict2items }}"
+  when: npm_config is defined
