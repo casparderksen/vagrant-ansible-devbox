@@ -71,7 +71,7 @@ Listen		{{ cntlm_config.port | default('3128') }}
 # Enable to allow access from other computers
 #
 #Gateway	yes
-{% if cntlm_config.gateway %}
+{% if cntlm_config.gateway is defined and cntlm_config.gateway %}
 Gateway	yes
 {% endif %}
 
@@ -91,7 +91,7 @@ Gateway	yes
 # Headers which should be replaced if present in the request
 #
 #Header		User-Agent: Mozilla/4.0 (compatible; MSIE 5.5; Windows 98)
-{% if cntlm_config.user_agent %}
+{% if cntlm_config.user_agent is defined %}
 Header		User-Agent: {{ cntlm_config.user_agent }}
 {% endif %}
 
