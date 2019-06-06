@@ -19,20 +19,6 @@
     state: directory
     mode: 0755
 
-- name: Add CNTLM profile script for defining proxies
-  template:
-    src: cntlm.sh.j2
-    dest: /etc/profile.d/cntlm.sh
-    mode: 0644
-  when: cntlm_config is defined
-
-- name: Ensure CNTLM daemon is started at boot and running
-  service:
-    name: cntlmd
-    state: started
-    enabled: yes
-  when: cntlm_config is defined
-
 - name: Configure CNTLM
   include: cntlm_config.yml
   when: cntlm_config is defined

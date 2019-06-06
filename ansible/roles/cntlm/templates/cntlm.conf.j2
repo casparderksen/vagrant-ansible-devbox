@@ -16,7 +16,7 @@ Domain		{{ cntlm_config.domain }}
 # PassLM          1AD35398BE6565DDB5C4EF70C0593492
 # PassNT          77B9081511704EE852F94227CF48A793
 ### Only for user 'testuser', domain 'corp-uk'
-PassNTLMv2      {{ pass_ntlmv2}}
+PassNTLMv2      {{ cntlm_pass_ntlmv2 }}
 
 # Specify the netbios hostname cntlm will send to the parent
 # proxies. Normally the value is auto-guessed.
@@ -71,6 +71,9 @@ Listen		{{ cntlm_config.port | default('3128') }}
 # Enable to allow access from other computers
 #
 #Gateway	yes
+{% if cntlm_config.gateway %}
+Gateway	yes
+{% endif %}
 
 # Useful in Gateway mode to allow/restrict certain IPs
 # Specifiy individual IPs or subnets one rule per line.
@@ -87,7 +90,10 @@ Listen		{{ cntlm_config.port | default('3128') }}
 
 # Headers which should be replaced if present in the request
 #
-Header		User-Agent: Mozilla/4.0 (compatible; MSIE 5.5; Windows 98)
+#Header		User-Agent: Mozilla/4.0 (compatible; MSIE 5.5; Windows 98)
+{% if cntlm_config.user_agent %}
+Header		User-Agent: {{ cntlm_config.user_agent }}
+{% endif %}
 
 # Tunnels mapping local port to a machine behind the proxy.
 # The format is <local_port>:<remote_host>:<remote_port>
