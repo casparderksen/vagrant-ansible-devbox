@@ -8,7 +8,7 @@ Vagrant.configure("2") do |config|
     config.vm.network "private_network", ip: "192.168.33.10"
 
     # Host port mapped to one DC/OS master port
-    config.vm.network :forwarded_port, guest: 8888, host: 8888
+    config.vm.network :forwarded_port, guest: 8000, host: 8000
 
     # Oracle Net Listener port
     config.vm.network :forwarded_port, guest: 1521, host: 1521
