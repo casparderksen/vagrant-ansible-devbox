@@ -8,15 +8,12 @@ project for pre-packaging a development environment as Vagrant box (ideal when
 your corporate service management processes and internet policies fail to yield
 a satisfactory development environment).
 
-The `devbox.yml` playbook installs the following software (adapt to your needs):
+The `devbox.yml` playbook installs the following software:
 - Docker daemon
 - Various Docker images
 - Apache Maven
 - OpenJDK-8 and 11 installation
 - Node and NPM
-- CNTLM proxy
-- Oracle Instantclient
-- miniDC/OS installer
 - Misc command line tools (git, jq, httpie, make, ...)
 
 The `local.yml` playbook applies the following configuration (adapt variables to your environment):
@@ -33,6 +30,11 @@ The `minidcos.yml` playbook installs the following software:
 - miniDC/OS command line tool (`minidcos`)
 - setup DC/OS in Docker cluster
 - DC/OS command line tool (`dcos`)
+
+The `minikube.yml` playbook installs the following software:
+- Minikube command line tool (`minikube`)
+- Kubernetes `kubectl` command line tool
+- Minikube cluster on Docker (`vmdriver=none`)
 
 The `oracle.yml` playbook installs the following software
 - Oracle 12c RDBMS Docker image and example project
@@ -100,6 +102,20 @@ SSH into the box and run:
     $ ansible-playbook minidcos.yml
 
 Wait for DC/OS to be ready. Go to [http://localhost:8888](http://localhost:8888) for accessing the DC/OS console.
+
+# Minikube in Docker
+
+SSH into the box abd run:
+
+    $ cd /vagrant/ansible
+    $ ansible-playbook minikube.yml
+    
+Wait for the cluster to be ready. Run
+
+    $ sudo kubectl proxy --address='0.0.0.0' --disable-filter=true
+    
+to access the Kubernetes dashboard at
+[http://localhost:8001/api/v1/namespaces/kube-system/services/http:kubernetes-dashboard:/proxy/](http://localhost:8001/api/v1/namespaces/kube-system/services/http:kubernetes-dashboard:/proxy/).
 
 # Dependencies
 
