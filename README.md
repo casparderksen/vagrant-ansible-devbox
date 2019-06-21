@@ -115,7 +115,7 @@ Wait for the cluster to be ready. Run
     $ sudo kubectl proxy --address='0.0.0.0' --disable-filter=true
     
 to access the Kubernetes dashboard at
-[http://localhost:8001/api/v1/namespaces/kube-system/services/http:kubernetes-dashboard:/proxy/](http://localhost:8001/api/v1/namespaces/kube-system/services/http:kubernetes-dashboard:/proxy/).
+[http://localhost:8001/api/v1/namespaces/kube-system/services/http:kubernetes-dashboard:/proxy/](http://localhost:8001/api/v1/namespaces/kube-system/services/http:kubernetes-dashboard:/proxy/).   
 
 # Dependencies
 
