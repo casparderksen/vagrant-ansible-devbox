@@ -1,0 +1,12 @@
+---
+
+- name: Get Minikube cluster status
+  command: "{{ minikube_bin }} status"
+  register: minikube_status
+  failed_when: false
+
+
+- name: Start Minikube cluster on host in Docker
+  command: "{{ minikube_bin }} start --vm-driver=none"
+  when: minikube_status.stdout.find('Running') == -1
+  notify: start kubectl proxy

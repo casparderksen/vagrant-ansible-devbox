@@ -1,0 +1,34 @@
+---
+
+- name: Install minikube executable
+  get_url:
+    url: "{{ minikube_bin_url }}"
+    dest: "{{ minikube_bin }}"
+    mode: '0755'
+
+- name: Test if Minikube config exists
+  stat:
+    path: "{{ minikube_config_dir }}"
+  register: minikube_config
+
+- name: Download and cache Minikube files
+  command: "{{ minikube_bin }} start --download-only"
+  when: not minikube_config.stat.exists
+
+- name: Add Kubernetes Yum repo
+  yum_repository:
+    name: kubernetes
+    description: Kubernetes YUM repo
+    baseurl: https://packages.cloud.google.com/yum/repos/kubernetes-el7-x86_64
+    gpgcheck: yes
+    repo_gpgcheck: yes
+    gpgkey: https://packages.cloud.google.com/yum/doc/yum-key.gpg https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
+
+- name: Install kubectl executable
+  package:
+    name: kubectl
+    state: present
+
+- name: Start Kubernetes cluster
+  include: create_cluster.yml
+  when: minikube_start

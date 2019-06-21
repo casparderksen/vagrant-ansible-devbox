@@ -1,0 +1,11 @@
+---
+
+- name: start kubectl proxy
+  vars:
+    msg: |
+      Run
+          sudo kubectl proxy --address='0.0.0.0' --disable-filter=true
+      to access the dashboard at
+          http://localhost:8001/api/v1/namespaces/kube-system/services/http:kubernetes-dashboard:/proxy/
+  debug:
+    msg: "{{ msg.split('\n') }}"
