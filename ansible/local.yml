@@ -21,6 +21,10 @@
 
   tasks:
 
+# IP must be the same as in Vagrantfile
+    - set_fact:
+        http_proxy_url: "http://192.168.33.10:3128"
+
     - block:
       - name: Set Git user name
         git_config:
@@ -42,6 +46,12 @@
     - include_role:
         name: docker
       vars:
+        config:
+          proxies:
+            default:
+              httpProxy: "{{ http_proxy_url }}"
+              httpsProxy: "{{ http_proxy_url }}"
+              noProxy: "*.local"
         daemon:
           insecure-registries:
             - registry.local

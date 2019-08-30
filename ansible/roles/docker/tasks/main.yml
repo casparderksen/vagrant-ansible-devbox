@@ -43,6 +43,13 @@
     append: true
   with_items: "{{ docker_users }}"
 
+- name: Configure Docker client
+  include: docker_config.yml
+  with_items: "{{ docker_users }}"
+  loop_control:
+    loop_var: user
+  when: config is defined
+
 - name: Install Docker Compose
   get_url:
     url: https://github.com/docker/compose/releases/download/{{ docker_compose_version }}/docker-compose-Linux-x86_64
