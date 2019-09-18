@@ -13,6 +13,10 @@ The `devbox.yml` playbook installs the following software:
 - Various Docker images
 - Apache Maven
 - OpenJDK-8 and 11 installation
+- Scala
+- Haskell
+- R
+- Python3
 - Node and NPM
 - Misc command line tools (git, jq, httpie, make, ...)
 
@@ -25,6 +29,9 @@ The `local.yml` playbook applies the following configuration (adapt variables to
 - Node and NPM configured with Nexus as proxy
 - Local CA trust stores for Linux and Java
 - Configuration for CNTLM and running cntlmd daemon for corporate proxy integration
+
+The `graphical.yml` playbook installs the following software:
+- GNOME desktop
 
 The `minidcos.yml` playbook installs the following software:
 - miniDC/OS command line tool (`minidcos`)
