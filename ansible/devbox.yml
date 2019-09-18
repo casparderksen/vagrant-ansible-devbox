@@ -7,7 +7,7 @@
       lvol:
         vg: vg_system
         lv: var
-        size: 20G
+        size: 30G
         resizefs: true
     - name: Extend the /tmp logical volume
       lvol:
@@ -19,7 +19,7 @@
       lvol:
         vg: vg_system
         lv: home
-        size: 1G
+        size: 5G
         resizefs: true
 
 - hosts: all
@@ -30,4 +30,5 @@
     - node
     - maven
     - openjdk
+#    - pyhton3
     - tools
