@@ -13,6 +13,7 @@
     - gitflow
     - graphviz
     - httpie
+    - jose
     - jq
     - lsof
     - make
