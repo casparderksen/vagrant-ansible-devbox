@@ -1,0 +1,6 @@
+---
+
+- name: Install R
+  package:
+    name: R
+    state: present
