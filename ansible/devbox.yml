@@ -27,7 +27,6 @@
   roles:
     - angular-dev
     - docker
-    - docker-images
     - node
     - maven
     - openjdk
