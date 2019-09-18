@@ -1,0 +1,6 @@
+---
+
+- name: Install the 'Haskell' package group
+  yum:
+    name: "@Haskell"
+    state: present

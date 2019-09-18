@@ -1,0 +1,22 @@
+---
+
+- name: Install the 'Gnome Desktop' environment group
+  yum:
+    name: "@^gnome-desktop-environment"
+    state: present
+
+- name: Get default runlevel
+  command: systemctl get-default
+  register: default_runlevel
+
+- name: Set default runlevel to graphical if not default
+  command: systemctl set-default graphical.target
+  when: default_runlevel.stdout != "graphical.target"
+
+- name: Check if graphical runlevel is active
+  command: systemctl is-active graphical.target
+  register: graphical_runlevel
+
+- name: Switch to graphical runlevel if not active
+  command: systemctl isolate graphical.target
+  when: graphical_runlevel.stdout != "active"

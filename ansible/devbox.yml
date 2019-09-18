@@ -21,14 +21,31 @@
         lv: home
         size: 5G
         resizefs: true
+    - name: Install the 'Development tools' package group
+      yum:
+        name: "@Development tools"
+        state: present
 
 - hosts: all
   become: yes
   roles:
     - angular-dev
     - docker
+    - haskell
     - node
     - maven
     - openjdk
-#    - pyhton3
+    - python3
+    - R
+    - scala
     - tools
+
+- hosts: graphical
+  become: yes
+  tasks:
+     - name: Extend the / logical volume
+       lvol:
+         vg: vg_system
+         lv: root
+         size: 8G
+         resizefs: true
