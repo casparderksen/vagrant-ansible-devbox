@@ -4,7 +4,6 @@
   become: yes
 
   tasks:
-
     - include_role:
         name: minidcos
       vars:

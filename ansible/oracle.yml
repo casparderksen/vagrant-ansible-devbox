@@ -6,6 +6,5 @@
   tasks:
     - include_role:
         name: docker-oracle
-
     - include_role:
         name: docker-weblogic
