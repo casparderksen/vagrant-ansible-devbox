@@ -15,8 +15,8 @@
 
 - name: Check if graphical runlevel is active
   command: systemctl is-active graphical.target
-  register: graphical_runlevel
+  register: graphical_active
 
 - name: Switch to graphical runlevel if not active
   command: systemctl isolate graphical.target
-  when: graphical_runlevel.stdout != "active"
+  when: graphical_active.stdout != "active"

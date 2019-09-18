@@ -33,6 +33,9 @@ Vagrant.configure("2") do |config|
   # miniDC/OS (mapped from one DC/OS master port)
   config.vm.network :forwarded_port, guest: 8888, host: 8888
 
+  # X11 forwarding
+  config.ssh.forward_agent = true
+  config.ssh.forward_x11 = true
 
   # VirtualBox provider configuration
   config.vm.provider "virtualbox" do |vb|
