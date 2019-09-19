@@ -1,0 +1,12 @@
+---
+
+- name: Install Nginx
+  package:
+    name: nginx
+    state: present
+
+- name: Ensure Nginx is started at boot and running
+  service:
+    name: nginx
+    state: started
+    enabled: yes
