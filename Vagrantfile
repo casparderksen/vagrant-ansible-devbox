@@ -2,7 +2,7 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-  config.vm.box = "centos7-ansible"
+  config.vm.box = "centos7-devbox"
 
   # Create a private network (IP must match IP used in ansible/local.yml)
   config.vm.network "private_network", ip: "192.168.33.10"
