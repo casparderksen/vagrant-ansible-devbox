@@ -10,3 +10,6 @@
     name: nginx
     state: started
     enabled: yes
+
+- name: Configure SE Linux policy for Nginx reverse proxy
+  seboolean: name=httpd_can_network_connect state=yes persistent=yes
